@@ -1,11 +1,10 @@
 import React from 'react'
 
-const QuemSou = () => {
+export const QuemSou = () => {
   return (
     <div>
-      asfdasfas
+      Quem sou
     </div>
   )
 }
 
-export default QuemSou
