@@ -1,15 +1,18 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
+import { useToDos } from "../context/useToDos";
 
-export const Formulary = ({ onSubmit }) => {
+export const Formulary = () => {
+  const { addToDo } = useToDos();
   const textElementRef = useRef();
 
+  //ao clicar no formulario será acionado a função addToDo que está no ToDoProvider
   const handleSubmit = (e) => {
-    e.preventdefault();
+    e.preventDefault();
 
-    onSubmit(textElementRef.current.value);
+    addToDo(textElementRef.current.value);
     textElementRef.current.value = "";
   };
- 
+
   return (
     <div className="mb-5 bg-secondary-subtle bg bg-gradient rounded p-4">
       <h5>Adicionar Tarefa</h5>
@@ -22,13 +25,12 @@ export const Formulary = ({ onSubmit }) => {
           ref={textElementRef}
           className="form-control"
           aria-label="Adicionar tarefa"
-          arua-aria-describedby="campo-adicionar-tarefa"
+          aria-describedby="campo-adicionar-tarefa"
         />
         <button
           className="btn btn-outline-primary bg-light"
           type="submit"
           id="button-addon2"
-          
         >
           Adicionar Tarefa
         </button>

@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const todosContext = createContext();
 
-export const TodoProvider = ({ children }) => {
+export const TodoProvider = (props) => {
   const [toDos, setToDos] = useState([
     //true é a fazer / false é finalizado
     { id: 1, text: "Estudar React", done: false },
@@ -19,6 +19,7 @@ export const TodoProvider = ({ children }) => {
     setToDos([...toDos, newToDo]);
   };
 
+  //markToDo vai substituir o onClick no ToDoItem
   const markToDo = (id) => {
     const newToDos = toDos.map((todo) => {
       if (todo.id === id) {
@@ -42,7 +43,7 @@ export const TodoProvider = ({ children }) => {
 
   return (
     <todosContext.Provider value={contextValues}>
-      {children}
+      {props.children}
     </todosContext.Provider>
   );
 };

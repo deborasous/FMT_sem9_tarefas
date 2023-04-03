@@ -8,19 +8,11 @@ export const Home = () => {
   return (
     <TodoProvider>
       <div className="row">
-        <Formulary onSubmit={addToDo} />
+        <Formulary />
       </div>
       <div className="row">
-        <ToDoList
-          name="A fazer"
-          list={pendingToDos}
-          onClick={markToDo}
-        />
-        <ToDoList
-          name="Finalizado"
-          list={completedToDos}
-          onClick={markToDo}
-        />
+        <ToDoList name="A fazer" />
+        <ToDoList name="Finalizado" />
       </div>
     </TodoProvider>
   );

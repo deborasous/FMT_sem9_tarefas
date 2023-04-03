@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useToDos } from "../context/useToDos";
 
 export const Header = () => {
   return (
@@ -8,7 +9,7 @@ export const Header = () => {
         <span className="flex-grow-1">Tarefas.Dev</span>
         <ul className="navbar-nav">
           <li className="nav-item me-auto">
-            <Link to="/" className="nav-link">
+            <Link to="/" aria-current="page" className="nav-link active">
               Home
             </Link>
           </li>

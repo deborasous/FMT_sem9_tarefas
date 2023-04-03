@@ -1,6 +1,9 @@
 import React from "react";
+import { useToDos } from "../context/useToDos";
 
-export const ToDoItem = ({ todo, onClick }) => {
+export const ToDoItem = ({ todo }) => {
+  const { markToDo } = useToDos();
+
   return (
     <li className="list-group-item list-group-item-light d-flex justify-content-between align-items-center">
       <label className="form-check-label" htmlFor={`${todo.id}-done-checkbox`}>
@@ -9,7 +12,7 @@ export const ToDoItem = ({ todo, onClick }) => {
       <input
         type="checkbox"
         checked={todo.done}
-        onChange={() => onClick(todo.id)}
+        onChange={() => markToDo(todo.id)}
         role="button"
         className="form-check-input m-0"
         id={`${todo.id}-done-checkbox`}
