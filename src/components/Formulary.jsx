@@ -3,12 +3,14 @@ import { useToDos } from "../context/useToDos";
 
 export const Formulary = () => {
   const { addToDo } = useToDos();
+  //a textElementRef é usada para acessar o valor do input
   const textElementRef = useRef();
 
   //ao clicar no formulario será acionado a função addToDo que está no ToDoProvider
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    //o método addToDo é chamado com o valor do input de texto com um parâmetro
     addToDo(textElementRef.current.value);
     textElementRef.current.value = "";
   };
