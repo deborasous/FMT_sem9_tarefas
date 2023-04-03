@@ -1,26 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Formulary } from "../components/Formulary";
 import { ToDoList } from "../components/ToDoList";
-import { useToDos } from "../context/useToDos";
+import { TodoProvider } from "../context/ToDoProvider";
 
 export const Home = () => {
-  const context = useToDos();
 
   return (
     <TodoProvider>
       <div className="row">
-        <Formulary onSubmit={context.addToDo} />
+        <Formulary onSubmit={addToDo} />
       </div>
       <div className="row">
         <ToDoList
           name="A fazer"
-          list={context.pendingToDos}
-          onClick={context.markToDo}
+          list={pendingToDos}
+          onClick={markToDo}
         />
         <ToDoList
           name="Finalizado"
-          list={context.completedToDos}
-          onClick={context.markToDo}
+          list={completedToDos}
+          onClick={markToDo}
         />
       </div>
     </TodoProvider>
