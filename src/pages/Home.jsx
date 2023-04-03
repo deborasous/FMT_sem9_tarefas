@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { Formulary } from "../components/Formulary";
 import { ToDoList } from "../components/ToDoList";
-import { todoContext } from "../context/Contexts";
+import { useToDos } from "../context/useToDos";
 
 export const Home = () => {
-  const context = useContext(todoContext);
+  const context = useToDos();
 
   return (
-    <>
+    <TodoProvider>
       <div className="row">
         <Formulary onSubmit={context.addToDo} />
       </div>
@@ -23,7 +23,7 @@ export const Home = () => {
           onClick={context.markToDo}
         />
       </div>
-    </>
+    </TodoProvider>
   );
 };
 

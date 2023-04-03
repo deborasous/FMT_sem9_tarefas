@@ -5,12 +5,10 @@ import { TodoProvider } from "./context/Contexts";
 function App() {
   return (
     <>
-      <TodoProvider>
-        <Header />
-        <main className="container mt-4">
-          <Outlet />
-        </main>
-      </TodoProvider>
+      <Header />
+      <main className="container mt-4">
+        <Outlet />
+      </main>
     </>
   );
 }
