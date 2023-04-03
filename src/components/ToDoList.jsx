@@ -2,7 +2,6 @@ import React from "react";
 import { ToDoItem } from "./ToDoItem";
 
 export const ToDoList = ({ name, list, onClick }) => {
-  console.log(list, 'ddd')
   return (
     <section>
       <h4>{name}</h4>

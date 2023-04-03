@@ -1,47 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Formulary } from "../components/Formulary";
 import { ToDoList } from "../components/ToDoList";
+import { todoContext } from "../context/Contexts";
 
 export const Home = () => {
-  const [toDos, setToDos] = useState([
-    //true é a fazer / false é finalizado
-    { id: 1, text: "Estudar React", done: false },
-    { id: 2, text: "Praticar com um projeto", done: true },
-    { id: 3, text: "Divulgar resultado no Linkedin", done: false },
-  ]);
-
-  const addToDo = (text) => {
-    const newToDo = {
-      id: Date.now(),
-      text,
-      done: false,
-    };
-    setToDos([...toDos, newToDo]);
-  };
-
-  const markToDo = (id) => {
-    const newToDos = toDos.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, done: !todo.done };
-      }
-      return todo;
-    });
-    setToDos(newToDos);
-  };
-
-  const pendingToDos = toDos.filter((todo) => todo.done);
-  const completedToDos = toDos.filter((todo) => !todo.done);
+  const context = useContext(todoContext);
 
   return (
-    <div>
+    <>
       <div className="row">
-        <Formulary onSubmit={addToDo} />
+        <Formulary onSubmit={context.addToDo} />
       </div>
       <div className="row">
-        <ToDoList name="A fazer" list={pendingToDos} onClick={markToDo} />
-        <ToDoList name="Finalizado" list={completedToDos} onClick={markToDo} />
+        <ToDoList
+          name="A fazer"
+          list={context.pendingToDos}
+          onClick={context.markToDo}
+        />
+        <ToDoList
+          name="Finalizado"
+          list={context.completedToDos}
+          onClick={context.markToDo}
+        />
       </div>
-    </div>
+    </>
   );
 };
 

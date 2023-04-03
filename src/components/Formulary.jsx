@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 
-
 export const Formulary = ({ onSubmit }) => {
   const textElementRef = useRef();
 
@@ -10,7 +9,7 @@ export const Formulary = ({ onSubmit }) => {
     onSubmit(textElementRef.current.value);
     textElementRef.current.value = "";
   };
-
+ 
   return (
     <div className="mb-5 bg-secondary-subtle bg bg-gradient rounded p-4">
       <h5>Adicionar Tarefa</h5>
@@ -29,6 +28,7 @@ export const Formulary = ({ onSubmit }) => {
           className="btn btn-outline-primary bg-light"
           type="submit"
           id="button-addon2"
+          
         >
           Adicionar Tarefa
         </button>
